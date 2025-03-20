@@ -1,0 +1,8 @@
+
+This program can be built on either MS-DOS/Windows or Unix.  Because
+Windows development tools differ so much from one another, a
+ready-to-run OTP.EXE Win32 console application is included in this
+archive.  It was compiled with Microsoft Visual C++ .7.0 / Visual
+Studio .NET. The "Onetime.sln" and "Onetime.vcproj" files used to
+build this version are included in the archive.
+

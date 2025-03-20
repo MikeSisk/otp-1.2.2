@@ -1,0 +1,62 @@
+
+2006 November 12
+
+Added includes of <stdio.h> and <stdlib.h> to random.c to avoid
+a GCC -Wall natter about exit() not being defined.
+
+Modified all of the function names in random.c and references
+to them in otp.c to prefix the names with "o_".  This avoid conflicts
+with the system-supplied random() functions if pulled in by header
+files we include.
+
+Added a version number (1.2 for this release) and date to the -u option
+output.
+
+Created a test.sh test script for Unix separate from the test.bat file
+for DOS/Windows.  Added "./" prefix to run the program from the
+local directory.  Changed the self-test target in the Makefile from
+"test" to "check".
+
+Converted otp.c, random.c, and md5.c to ANSI C.  Made the byteReverse
+internal utility function in md5.c static.
+
+When building for Unix, if the system implements /dev/random and
+we're generating a random seed, 16 bits of entropy from that source
+is stirred into the mix.
+
+2006 November 13
+
+Added WIN32 code to otp.c to obtain assorted entropy from
+Windows API calls.
+
+Created Visual Studio .NET Onetime.sln and Onetime.vcproj
+files to build a Win32 console application.  Built and
+tested with the test.bat script.  The executable, which is
+built as Release\Onetime.exe was copied to otp.exe
+in the main directory.
+
+2012 June 6
+
+Applied to patches from Colin Tuckley to correct problems when
+building on 64-bit architectures.
+
+Updated version to 1.2.1, May 2012.
+
+2014 June 2
+
+Fixed an inconsistency in the declaration of o_random() between
+random.c and otp.c, and in the process converted the entire program
+to use <stdint.h> and its types throughout, eliminating the ugly
+and non-portable sensing of architectures within the code.
+
+Corrected a sizeof() reference to a pointer to a structure in
+md5.c which caused a warning in gcc 4.8.1.
+
+Changed the make target to build the distribution to "dist" in
+keeping with contemporary community standards.
+
+Modified the distribution creation procedure to make a distribution
+which unpacks into a directory named otp-$(VERSION) rather than the
+current directory.
+
+Updated version to 1.2.2, June 2014.
